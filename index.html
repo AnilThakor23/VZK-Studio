@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VKZ Studio</title>
+  <!-- tailwind css-->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-[#111] relative font-[Satoshi]">
+  
+  <div class="main w-full">
+    <canvas class=" h-[100vh] w-full fixed opacity-[0.5] top-0 left-0 z-[1]"></canvas>
+    <div class="page relative w-full h-fit text-white z-[20] overflow-hidden">
+      <div class="loadPage absolute top-0 left-0 h-[100vh] w-[100vw] flex items-center justify-end flex-col gap-[5vh] pb-[25vh]">
+          <img class="w-[25vw]" src="/images/VKZ_Studio_logo.svg" alt="">
+          <p>Design, motion and development studio</p>
+          <div class="enter h-fit w-fit px-[3vw] py-[2vh] text-[1.2vw] text-black bg-white z-[25] font-bold">ENTER</div>
+      </div>
+      <div class="Homepage opacity-0 relative  w-full h-[100vh] text-white px-[3vw] py-[5vh] flex flex-col justify-between">
+         <div class="w-full h-fit flex justify-between items-center">
+          <h1 class="text-[1.5vw] font-[Anton]">VZK Studio</h1>
+          <div class="flex gap-3 items-center">
+            <h3 class="uppercase text-[1vw] font-semibold">all projects</h3>
+            <div class="h-[2vw] w-[2vw] border-[1px] border-[#ffffff7b] rounded-full flex justify-center items-center">
+              <i class="ri-stock-line text-[0.8vw]"></i>
+            </div>
+          </div>
+         </div>
+         <div class="w-full h-fit flex justify-between items-center">
+          <div class="sound flex gap-3 items-center">
+            <div class="h-[2.5vw] w-[2.5vw] border-[1.5px] border-[#ffffff7b] rounded-full relative">
+              <i class="soundP ri-volume-down-line text-[1.1vw] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></i>
+              <i class="soundF ri-volume-mute-line text-[1.1vw] opacity-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></i>
+            </div>
+            <h3 class="soundText uppercase text-[1vw] font-semibold">sound on</h3>
+
+          </div>
+          <div class="flex gap-3 items-center">
+            <h3 class="uppercase text-[1vw] font-semibold">scroll to explore</h3>
+            <div class="h-[2.5vw] w-[2.5vw] border-[1.5px] border-[#ffffff7b] rounded-full flex justify-center items-center">
+              <div class=" w-[1vw] h-[1vw] overflow-hidden relative">
+                <i class="scrollArrow ri-arrow-down-line absolute text-[1vw]  leading-none top-[-100%]"></i>
+                <i class="scrollArrow ri-arrow-down-line absolute  text-[1vw]  leading-none"></i>
+              </div>
+            </div>
+          </div>
+         </div>
+         <div class="scrollAnime opacity-0 absolute h-[7vw] w-[7vw] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
+            <p class="uppercase text-[1.1vw] font-bold">scroll</p>
+            <div class="layer1 absolute w-full h-full border-[1px] border-[#ffffff33] rounded-full"></div>
+            <div class="layer2 absolute w-full h-full border-[1px] border-[#ffffff33] rounded-full"></div>
+            <div class="layer3 absolute w-full h-full border-[1px] border-[#ffffff33] rounded-full"></div>
+            <div class="layer4 absolute w-full h-full border-[1px] border-[#ffffff33] rounded-full"></div>
+         </div>
+         <audio controls autoplay loop muted preload="auto" class="absolute bottom-0 left-[40%] opacity-0">
+            <source src="/sound/sound.mp3" type="audio/mpeg">  
+          </audio>
+          <div class="contact opacity-0 text-black font-semibold absolute bottom-0 left-1/2 -translate-x-1/2 w-fit h-fit flex flex-col gap-[5vh] items-center mb-[7vh]">
+            <h3 class="text-[10vw] uppercase font-bold font-[Anton]  leading-none tracking-wide">contact</h3>
+            <div class="w-full flex justify-between text-[1vw]">
+               <div class="flex flex-col gap-[3vh] w-[50%]">
+                <div> <h1>apcode23@gmail.com</h1> <h2>+91 6352442490</h2></div>
+                <div> <p>Don't have time to waste?</p> <p class="underline">Book a meeting.</p> </div>
+               </div>
+               <div class="">
+                  <h4>Socials</h4>
+                  <a href="https://www.linkedin.com/in/anil-thakor-830b242b2/" class="mt-[3vh]">Linkedin</a>
+                  <a href="https://github.com/AnilThakor23" class="mt-[1vh]">Github</a>
+               </div>
+            </div>
+            <p class="mt-[15vh]">@ 2025 VKZ Studio</p>
+          </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <script type="module" src="./src/three.js"></script>
+</body>
+</html>

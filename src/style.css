@@ -1,0 +1,45 @@
+
+@font-face {
+  font-family: Anton;
+  src: url("/fonts/Anton.ttf");
+}
+@font-face {
+  font-family: Gilroy;
+  src: url("/fonts/Gilroy.ttf");
+}
+@font-face {
+  font-family: Satoshi;
+  src: url("/fonts/Satoshi.ttf");
+}
+
+.scrollAnime .layer1{
+  animation: fadeInOut 2.5s linear 0s infinite;
+}
+.scrollAnime .layer2{
+  animation: fadeInOut 3s linear 0.5s infinite;
+}
+.scrollAnime .layer3{
+  animation: fadeInOut 1.5s linear 1s infinite;
+}
+.scrollAnime .layer4{
+  animation: fadeInOut 2s linear 1s infinite;
+}
+
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    width: 90%;
+    height: 90%;
+  }
+  30% {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
