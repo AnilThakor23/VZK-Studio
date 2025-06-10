@@ -1,9 +1,14 @@
 import './style.css'
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import gsap from 'gsap';
 import {Text} from 'troika-three-text'
 import { Reflector } from 'three/examples/jsm/objects/Reflector.js';
+
+
+const loadingManager = new THREE.LoadingManager();
+const textureLoader = new THREE.TextureLoader(loadingManager);
+const GLTFloader = new GLTFLoader(loadingManager);
 
 
 
@@ -39,7 +44,7 @@ function createText(content,size){
   const text = new Text()
     
 text.text = content
-text.font = `/fonts/Anton.ttf`;
+text.font = `fonts/Anton.ttf`;
   text.anchorX = 'center';
   text.anchorY = 'middle';
   text.textAlign = 'center';
@@ -57,7 +62,7 @@ text.font = `/fonts/Anton.ttf`;
 
 const s1tText1 = createText("",30000);
   s1tText1.text = ` VKZ Studio \n  A studio where design, motion, and development meet.\n We craft digital products that don't just attract you, but\n pull you into an immersive experience.`;
-  s1tText1.font = `/fonts/Satoshi.ttf`;
+  s1tText1.font = `fonts/Satoshi.ttf`;
   s1tText1.letterSpacing = -0.01;
   s1tText1.sync();
   scene.add(s1tText1)
@@ -71,7 +76,7 @@ Image1Text1.sync()
 scene.add(Image1Text1)
 
 const Image1Text2 = createText(`Website Design & Development`, 80000)
-Image1Text2.font = `/fonts/Satoshi.ttf`;
+Image1Text2.font = `fonts/Satoshi.ttf`;
 Image1Text2.letterSpacing = -0.02;
 Image1Text2.sync();
 scene.add(Image1Text2)
@@ -82,7 +87,7 @@ Image2Text1.sync();
 scene.add(Image2Text1)
   
 const Image2Text2 = createText(`Brand Identity, Website Design & Development`, 80000)
-Image2Text2.font = `/fonts/Satoshi.ttf`;
+Image2Text2.font = `fonts/Satoshi.ttf`;
 Image2Text2.letterSpacing = -0.02;
 Image2Text2.sync();
 scene.add(Image2Text2)
@@ -93,7 +98,7 @@ Image3Text1.sync()
 scene.add(Image3Text1)
 
 const Image3Text2 = createText(`Website Design & Development`, 80000)
-Image3Text2.font = `/fonts/Satoshi.ttf`;
+Image3Text2.font = `fonts/Satoshi.ttf`;
 Image3Text2.letterSpacing = -0.02;
 Image3Text2.sync();
 scene.add(Image3Text2)
@@ -104,7 +109,7 @@ Image4Text1.sync();
 scene.add(Image4Text1)
   
 const Image4Text2 = createText(`Product Design`, 80000)
-Image4Text2.font = `/fonts/Satoshi.ttf`;
+Image4Text2.font = `fonts/Satoshi.ttf`;
 Image4Text2.letterSpacing = -0.02;
 Image4Text2.sync();
 scene.add(Image4Text2)
@@ -112,16 +117,14 @@ scene.add(Image4Text2)
 
 
 
-const loader = new GLTFLoader();
 
-loader.load('/models/STROM_6.glb', (gltf) => {
+GLTFloader.load('models/STROM_6.glb', (gltf) => {
   gltf.scene.position.set(0,0,-95)
   const plane = new THREE.Mesh( new THREE.PlaneGeometry(2.55, 75) , new THREE.MeshBasicMaterial({color: 0x510173}))
   plane.position.y = 0.012;
   plane.position.z = gltf.scene.position.z - 15.0;
   plane.rotation.x = -Math.PI / 2;
   scene.add(plane)
-  console.log(gltf.scene);
   
   gltf.scene.traverse((child) => {
     if (child.isMesh && child.material) {
@@ -132,7 +135,7 @@ loader.load('/models/STROM_6.glb', (gltf) => {
       child.material.color.set(0xF000F0);
       child.material.metalness = 0.9;
       child.material.roughness = 0.01;
-      // console.log(child.material);
+   
       
   
 
@@ -206,8 +209,7 @@ let animationSpeed = 0.0007
 ///////////////////////////////////////////////////////////////////////
       // scene.background = new THREE.Color(0x04001D)
 
-      const textureLoader = new THREE.TextureLoader();
-      let backgroundTexture2 = textureLoader.load('/images/clouds2.webp')
+      let backgroundTexture2 = textureLoader.load('images/clouds2.webp')
       scene.background = new THREE.Color(0x04001D);
       scene.fog = new THREE.FogExp2(0x04001D,0.30)
 
@@ -215,7 +217,7 @@ let cubes= [];
       // / Create a cube
       const geometry = new THREE.PlaneGeometry(0.55, 0.32);
       for(let i=1 ; i<=4;i++){
-        let texture = textureLoader.load(`/images/image${i}.avif`)
+        let texture = textureLoader.load(`images/image${i}.avif`)
         texture.colorSpace = THREE.SRGBColorSpace;
         const material = new THREE.MeshBasicMaterial({ color: 0xffffff , map:texture , toneMapped: false });
 
@@ -287,7 +289,7 @@ let cubes= [];
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////
-loader.load('/models/VKZ_web_34.glb', (gltf) => {
+GLTFloader.load('models/VKZ_web_34.glb', (gltf) => {
       const model = gltf.scene;
       model.position.set(0,0,0)
        
@@ -380,7 +382,6 @@ loader.load('/models/VKZ_web_34.glb', (gltf) => {
          
           if(obj.name == "Statues_Team"){
             positionofcube = obj.position
-            console.log(obj.position);
             
             obj.position.x = 0.5
             obj.position.y -= 0.1
@@ -397,7 +398,7 @@ loader.load('/models/VKZ_web_34.glb', (gltf) => {
           
         });
 
-        let statue1 = loader.load('/models/Statue_Lukas_2.glb', (gltf) => {
+        let statue1 = GLTFloader.load('models/Statue_Lukas_2.glb', (gltf) => {
           gltf.scene.position.x = positionofcube.x
           gltf.scene.position.y = positionofcube.y - 0.11
           gltf.scene.position.z = positionofcube.z
@@ -406,7 +407,7 @@ loader.load('/models/VKZ_web_34.glb', (gltf) => {
           
             scene.add(gltf.scene);    
         })
-        let statue2 = loader.load('/models/Statue_Mira_2.glb', (gltf) => {
+        let statue2 = GLTFloader.load('models/Statue_Mira_2.glb', (gltf) => {
           gltf.scene.position.x = positionofcube.x - 1
           gltf.scene.position.y = positionofcube.y - 0.11
           gltf.scene.position.z = positionofcube.z
@@ -415,14 +416,14 @@ loader.load('/models/VKZ_web_34.glb', (gltf) => {
           
             scene.add(gltf.scene);    
         })
-        let statue3 = loader.load('/models/Statue_Tyna_2.glb', (gltf) => {
+        let statue3 = GLTFloader.load('models/Statue_Tyna_2.glb', (gltf) => {
           gltf.scene.position.x = positionofcube.x - 0.9
           gltf.scene.position.y = positionofcube.y - 0.11
           gltf.scene.position.z = positionofcube.z - 1.5
           
             scene.add(gltf.scene);    
         })
-        let statue4 = loader.load('/models/Statue_Venca_2.glb', (gltf) => {
+        let statue4 = GLTFloader.load('models/Statue_Venca_2.glb', (gltf) => {
           gltf.scene.position.x = positionofcube.x - 0.1
           gltf.scene.position.y = positionofcube.y - 0.11
           gltf.scene.position.z = positionofcube.z - 1.5
@@ -569,17 +570,10 @@ function animate() {
   renderer.render(scene, camera);
 }
 
+loadingManager.onLoad = () => {
 
-animate()
-
-
-
-})    
-
-/////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-
-
+  animate();
+  
 const sound = document.querySelector("audio")
 let isAudioPlaying = false;
 sound.muted = true
@@ -619,9 +613,6 @@ EnterBtn.addEventListener("click",()=>{
   
 })
 
-
-
-
 document.querySelector(".sound").addEventListener("click",()=>{
   if(isAudioPlaying){
     document.querySelector(".soundF").style.opacity = 1
@@ -640,3 +631,13 @@ document.querySelector(".sound").addEventListener("click",()=>{
     sound.play()
   }
 })
+};
+
+
+
+
+})    
+
+/////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
