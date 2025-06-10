@@ -38,8 +38,6 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 
-
-
 function createText(content,size){
   const text = new Text()
     
